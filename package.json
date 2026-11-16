@@ -1,0 +1,76 @@
+{
+  "name": "@mxstage/eam-connectors",
+  "version": "0.1.0",
+  "description": "Connectors between EAM systems (IBM Maximo first; IFS and SAP planned) and the tools built on them: REST client, loading, metadata, a guarded commit engine, license keys, saved connections and a fake Maximo for tests.",
+  "license": "BUSL-1.1",
+  "author": "TSUNAGI <mxstage@tsunagi.app> (https://mxstage.tsunagi.app)",
+  "homepage": "https://github.com/mxstage/eam-connectors#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxstage/eam-connectors.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mxstage/eam-connectors/issues",
+    "email": "mxstage@tsunagi.app"
+  },
+  "keywords": [
+    "maximo",
+    "eam",
+    "cmms",
+    "ibm-maximo",
+    "mas-manage",
+    "oslc",
+    "rest"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./license": {
+      "types": "./dist/license/index.d.ts",
+      "import": "./dist/license/index.js"
+    },
+    "./node": {
+      "types": "./dist/node/index.d.ts",
+      "import": "./dist/node/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js"
+    },
+    "./eam": {
+      "types": "./dist/eam/index.d.ts",
+      "import": "./dist/eam/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "pack:check": "npm pack --dry-run",
+    "check:exports": "node scripts/check-exports.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "fast-check": "^4.10.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
